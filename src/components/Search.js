@@ -9,7 +9,7 @@ const Search = () => {
 
   useEffect(() => {
     const search = async () => {
-      const { data } = await axios.get("http://openlibrary.org/search.json", {
+      const { data } = await axios.get("https://openlibrary.org/search.json", {
         params: {
           author: term,
         },
