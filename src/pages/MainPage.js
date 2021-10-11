@@ -14,7 +14,7 @@ import '../index.css'
 
 
 import axios from "axios"
-import { Alert, Button, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 import ReactDOMServer from 'react-dom/server';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -51,7 +51,7 @@ export default function MainPage() {
             <>
             <Grid key={result.key} item xs={12} md={5}>
                 <Item>{result.title}</Item>
-                <Item><img src={article.url}></img></Item>
+                <Item><img alt="" src={article.url}></img></Item>
             </Grid>
             </>
         )
