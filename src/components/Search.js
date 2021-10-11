@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-import ReactDOMServer from 'react-dom/server';
-
 
 const Search = () => {
-  const [term, setTerm] = useState("")
+  const [term, setTerm] = useState("tolkien")
   const [results, setResults] = useState([])
 
   useEffect(() => {
     const search = async () => {
-      const { data } = await axios.get("https://openlibrary.org/search.json", {
+      const { data } = await axios.get("http://openlibrary.org/search.json", {
         params: {
           author: term,
         },
@@ -20,17 +18,12 @@ const Search = () => {
   }, [term])
 
   const searchResultsMapped = results.map(result => {
-
-    const article = {
-      url : ReactDOMServer.renderToStaticMarkup((result.isbn && result.isbn.length) ? "http://covers.openlibrary.org/b/isbn/" + result.isbn[0] + "-M.jpg":"")
-    }
-
     return (
-      <div className="item" key={result.title}>
+      <div className="item" key={result.isbn}>
         <div className="content">
-          <div className="header"><strong>{result.title}</strong></div>
+          <div className="header">{result.title}</div>
         </div>
-        <img alt="" src={article.url}></img>
+        {result.isbn}
       </div>
     )
   })
@@ -39,12 +32,7 @@ const Search = () => {
     <div>
       <div className="ui form">
         <div className="field">
-          <label>Search </label>
-          <select 
-            id="searchBy">
-            <option value="author">Author</option>
-            <option value="title">Title</option>
-          </select>
+          <label>Search Term</label>
           <input
             className="input"
             value={term}
