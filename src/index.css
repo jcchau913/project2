@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
@@ -17,8 +18,19 @@ body, html {
   }
   .bg {
   background-image: url("./assets/backgroundImage2.png");
-  height: 100%;
+  /* height: 100vh; */
   background-position: center;
   background-repeat: repeat;
   background-size:cover;
+  min-height:100vh;
+  width: 100%;
+  height: auto;
+
+ 
+ 
   }
+
+.imageList{
+  display:"flex";
+  flex-wrap:"nowrap"
+}
